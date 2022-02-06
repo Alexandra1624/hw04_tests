@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
+NUM_SYMBOLS = 15
 
 
 class Group(models.Model):
@@ -26,7 +27,7 @@ class Post(models.Model):
         related_name='posts')
 
     def __str__(self):
-        return self.text
+        return self.text[:NUM_SYMBOLS]
 
     class Meta:
         ordering = ['-pub_date']
